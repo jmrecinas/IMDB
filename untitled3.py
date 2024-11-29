@@ -68,11 +68,11 @@ st.write("Bienvenido al sistema de recomendación de películas basado en conten
 # Cargar los datos y modelo
 df, knn, tfidf = load_data()
 
-
+# Filtro por género
+selected_genre = st.multiselect("Selecciona los géneros:", options=df['genre'].explode().unique(), default=[])
 
 # Filtro por año
 selected_year = st.slider("Selecciona el rango de años:", min_value=df['year'].min(), max_value=df['year'].max(), value=(df['year'].min(), df['year'].max()))
-
 
 
 df_filtered = df_filtered[df_filtered['year'].between(selected_year[0], selected_year[1])]
@@ -116,6 +116,8 @@ if st.button('Obtener recomendaciones'):
         st.write(f"**Valoración en IMDb:** {movie_details.get('imdbRating', 'Desconocido')}")
 
 # Mostrar las películas más populares de la semana
+st.write("--------------------------------------------------------------------------------------")
+st.write("--------------------------------------------------------------------------------------")
 st.write("### Top 10 películas:")
 top_movies = df.sort_values(by='rating', ascending=False).head(10)
 for idx, movie in top_movies.iterrows():
@@ -128,3 +130,4 @@ for idx, movie in top_movies.iterrows():
     with col2:
         st.image(movie['image'], width=100)
     st.write(f"[Ver en IMDb](https://www.imdb.com/title/{movie['imdbid']})")
+
