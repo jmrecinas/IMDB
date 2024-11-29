@@ -45,7 +45,8 @@ def get_recommendations(movie_name, df, knn, tfidf):
             "rating": df['rating'][idx],
             "year": df['year'][idx],
             "genre": df['genre'][idx],
-            "image": df['image'][idx]  # Cambié aquí a 'image' para mostrar la imagen
+            "image": df['image'][idx],
+            "imdbid": df['imdbid'][idx]  
         })
 
     return recommended_movies
