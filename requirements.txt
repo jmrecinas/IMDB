@@ -2,3 +2,4 @@ streamlit
 scikit-learn
 pandas
 pyngrok
+tensorflow>=2.0
