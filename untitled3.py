@@ -45,7 +45,7 @@ def get_recommendations(movie_name, df, knn, tfidf):
             "rating": df['rating'][idx],
             "year": df['year'][idx],
             "genre": df['genre'][idx],
-            "image": df['image'][idx]
+            "image": df['image'][idx]  # Cambié aquí a 'image' para mostrar la imagen
         })
 
     return recommended_movies
@@ -77,6 +77,8 @@ if st.button('Obtener recomendaciones'):
             st.write(f"**Año:** {movie['year']}")
             st.write(f"**Género(s):** {movie['genre']}")
         with col2:
+            # Mostrar la imagen de la película
             st.image(movie["image"], width=100)
 
-        st.write(f"[Ver en IMDb](https://www.imdb.com/title/{movie['imdb_link'][7:]})")
+        st.write(f"[Ver en IMDb](https://www.imdb.com/title/{movie['imdbid']})")
+
