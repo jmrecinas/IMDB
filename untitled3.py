@@ -68,17 +68,12 @@ st.write("Bienvenido al sistema de recomendación de películas basado en conten
 # Cargar los datos y modelo
 df, knn, tfidf = load_data()
 
-# Filtro por género
-selected_genre = st.multiselect("Selecciona los géneros:", options=df['genre'].explode().unique(), default=[])
+
 
 # Filtro por año
 selected_year = st.slider("Selecciona el rango de años:", min_value=df['year'].min(), max_value=df['year'].max(), value=(df['year'].min(), df['year'].max()))
 
-# Filtrar películas por género y año
-if selected_genre:
-    df_filtered = df[df['genre'].apply(lambda x: any(genre in selected_genre for genre in eval(x)))]
-else:
-    df_filtered = df
+
 
 df_filtered = df_filtered[df_filtered['year'].between(selected_year[0], selected_year[1])]
 
