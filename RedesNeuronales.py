@@ -20,14 +20,14 @@ def load_data():
 
 # Crear el modelo de red neuronal para generar representaciones de las películas
 def create_model(vocab_size, max_len):
-model = Sequential([
-    Dense(128, input_dim=X_train.shape[1], activation='relu'),
-    Dense(64, activation='relu'),
-    Dense(32, activation='relu'),
-    Dense(64, activation='relu'),
-    Dense(128, activation='relu'),
-    Dense(X_train.shape[1], activation='sigmoid')  # Output layer
-])
+    model = Sequential([
+        Dense(128, input_dim=X_train.shape[1], activation='relu'),
+        Dense(64, activation='relu'),
+        Dense(32, activation='relu'),
+        Dense(64, activation='relu'),
+        Dense(128, activation='relu'),
+        Dense(X_train.shape[1], activation='sigmoid')  # Output layer
+    ])
 
     return model
 
