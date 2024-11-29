@@ -20,14 +20,15 @@ def load_data():
 
 # Crear el modelo de red neuronal para generar representaciones de las películas
 def create_model(vocab_size, max_len):
-    model = Sequential()
-    model.add(Embedding(input_dim=vocab_size, output_dim=100, input_length=max_len))
-    model.add(GlobalAveragePooling1D())  # Convertir secuencias en un solo vector
-    model.add(Dense(128, activation='relu'))
-    model.add(Dense(64, activation='relu'))
-    model.add(Dense(32, activation='relu'))
-    model.add(Dense(16, activation='relu'))
-    model.compile(optimizer='adam', loss='mse', metrics=['accuracy'])
+model = Sequential([
+    Dense(128, input_dim=X_train.shape[1], activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(32, activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(128, activation='relu'),
+    Dense(X_train.shape[1], activation='sigmoid')  # Output layer
+])
+
     return model
 
 # Función para hacer la recomendación
