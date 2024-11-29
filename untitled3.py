@@ -77,6 +77,6 @@ if st.button('Obtener recomendaciones'):
             st.write(f"**Año:** {movie['year']}")
             st.write(f"**Género(s):** {movie['genre']}")
         with col2:
-            st.image(movie["imdb_link"], width=100)
+            st.image(movie["image"], width=100)
 
         st.write(f"[Ver en IMDb](https://www.imdb.com/title/{movie['imdb_link'][7:]})")
